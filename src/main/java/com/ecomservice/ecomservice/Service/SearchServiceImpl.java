@@ -32,8 +32,8 @@ public class SearchServiceImpl implements SearchService{
         if(sortParamList.get(0).getSortType().equals("ASC")) sort=Sort.by(sortParamList.get(0).getSortParamName()).ascending();
          else sort=Sort.by(sortParamList.get(0).getSortParamName()).descending();
          for (int i=1;i<sortParamList.size();i++){
-             if(sortParamList.get(i).getSortType().equals("ASC")) sort.and(Sort.by(sortParamList.get(i).getSortParamName()).ascending());
-             else sort.and(Sort.by(sortParamList.get(i).getSortParamName()).descending());
+             if(sortParamList.get(i).getSortType().equals("ASC")) sort=sort.and(Sort.by(sortParamList.get(i).getSortParamName()).ascending());
+             else sort=sort.and(Sort.by(sortParamList.get(i).getSortParamName()).descending());
          }
         //pagerequest is the object of pageable
         PageRequest pageRequest=PageRequest.of(pageNumber,pageSize,sort);
